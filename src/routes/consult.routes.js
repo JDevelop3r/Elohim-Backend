@@ -16,6 +16,8 @@ router.get("/:consultId", consultController.getConsultById);
 
 router.get("/pacient/:pacientCed", consultController.getConsultsByPacientCed);
 
+router.get("/doctor/:doctorCed", consultController.getConsultsByDoctorCed);
+
 router.delete(
   "/:consultId",
   [authJwt.verifyToken, authJwt.isAdmin],

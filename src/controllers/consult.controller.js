@@ -8,8 +8,8 @@ export const createConsult = async (req, res) => {
   const { doctor, pacient, area, date, trabajo, observaciones, pago } =
     req.body;
 
-  const docObj = await Doctor.findById(doctor);
-  const pacObj = await Pacient.findById(pacient);
+  const docObj = await Doctor.findOne({ ced: doctor });
+  const pacObj = await Pacient.findOne({ ced: pacient });
   const especialidad = await Especialidad.findOne({ name: area });
 
   let pagos = [];
@@ -68,6 +68,24 @@ export const getConsultsByPacientCed = async (req, res) => {
   const pacient = await Pacient.findOne({ ced: req.params.pacientCed });
 
   const consults = await Consult.find({ pacient: pacient._id })
+    .populate("doctor")
+    .populate("pacient")
+    .populate({
+      path: "pago",
+      populate: {
+        path: "formaPago",
+        model: "FormaPago",
+      },
+    })
+    .populate("area");
+
+  res.status(201).json(consults);
+};
+
+export const getConsultsByDoctorCed = async (req, res) => {
+  const doctor = await Doctor.findOne({ ced: req.params.doctorCed });
+
+  const consults = await Consult.find({ doctor: doctor._id })
     .populate("doctor")
     .populate("pacient")
     .populate({
