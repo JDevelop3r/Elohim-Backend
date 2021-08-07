@@ -14,6 +14,7 @@ import authRoutes from "./routes/auth.routes";
 import pacientRoutes from "./routes/pacient.routes";
 import doctorRoutes from "./routes/doctor.routes";
 import consultRoutes from "./routes/consult.routes";
+import comisionesRoutes from "./routes/comisiones.routes";
 
 const app = express();
 app.use(express.json());
@@ -38,5 +39,6 @@ app.use("/auth", authRoutes);
 app.use("/pacient", pacientRoutes);
 app.use("/doctor", doctorRoutes);
 app.use("/consult", consultRoutes);
+app.use("/comisiones", comisionesRoutes);
 
 export default app;
