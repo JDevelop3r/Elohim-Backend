@@ -6,6 +6,7 @@ import {
   createRoles,
   createEspecialidades,
   createFormasPago,
+  createComisiones,
 } from "./libs/initialSetup";
 
 import productsRoutes from "./routes/products.routes";
@@ -20,6 +21,7 @@ app.use(cors());
 createRoles();
 createEspecialidades();
 createFormasPago();
+createComisiones();
 
 app.use(morgan("dev"));
 

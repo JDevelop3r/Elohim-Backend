@@ -1,6 +1,7 @@
 import Role from "../models/Role";
 import Especialidad, { ESPECIALIDADES } from "../models/Especialidad";
 import FormaPago, { FORMA_PAGO } from "../models/FormaPago";
+import Comisiones, { COMISIONES } from "../models/Comisiones";
 
 export const createRoles = async () => {
   try {
@@ -50,6 +51,29 @@ export const createFormasPago = async () => {
         new FormaPago({
           name: forma,
           moneda: forma.includes("$") ? "dolares" : "bolivares",
+        }).save()
+      );
+    }
+    const values = await Promise.all(promises);
+
+    console.log(values);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const createComisiones = async () => {
+  try {
+    const count = await Comisiones.estimatedDocumentCount();
+
+    if (count > 0) return;
+
+    let promises = [];
+    for (const comision of COMISIONES) {
+      promises.push(
+        new Comisiones({
+          name: comision,
+          valor: 0.0012,
         }).save()
       );
     }
