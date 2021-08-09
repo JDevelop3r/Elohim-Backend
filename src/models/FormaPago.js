@@ -8,6 +8,7 @@ export const FORMA_PAGO = [
   "pago_movil",
   "efectivoBss",
   "credito",
+  "petro",
   "otro",
 ];
 export const TIPO_PAGO = ["dolares", "bolivares"];

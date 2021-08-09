@@ -43,6 +43,13 @@ export const getConsults = async (req, res) => {
         model: "FormaPago",
       },
     })
+    .populate({
+      path: "doctor",
+      populate: {
+        path: "especialidades",
+        model: "Especialidad",
+      },
+    })
     .populate("area");
   console.log(consults);
   res.json(consults);
@@ -57,6 +64,13 @@ export const getConsultById = async (req, res) => {
       populate: {
         path: "formaPago",
         model: "FormaPago",
+      },
+    })
+    .populate({
+      path: "doctor",
+      populate: {
+        path: "especialidades",
+        model: "Especialidad",
       },
     })
     .populate("area");
@@ -77,6 +91,13 @@ export const getConsultsByPacientCed = async (req, res) => {
         model: "FormaPago",
       },
     })
+    .populate({
+      path: "doctor",
+      populate: {
+        path: "especialidades",
+        model: "Especialidad",
+      },
+    })
     .populate("area");
 
   res.status(201).json(consults);
@@ -93,6 +114,13 @@ export const getConsultsByDoctorCed = async (req, res) => {
       populate: {
         path: "formaPago",
         model: "FormaPago",
+      },
+    })
+    .populate({
+      path: "doctor",
+      populate: {
+        path: "especialidades",
+        model: "Especialidad",
       },
     })
     .populate("area");

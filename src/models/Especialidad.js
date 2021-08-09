@@ -9,6 +9,7 @@ export const ESPECIALIDADES = [
   "maternidad",
   "cardiologia",
   "ortodoncia",
+  "ginecologia",
   "cirugia_bucal",
   "implantes",
   "cirugia_maxilofacial",
