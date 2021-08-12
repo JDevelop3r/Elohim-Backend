@@ -4,11 +4,7 @@ const router = Router();
 import * as doctorController from "../controllers/doctor.controller";
 import { authJwt } from "../middlewares/index";
 
-router.post(
-  "/",
-  [authJwt.verifyToken, authJwt.isModerator],
-  doctorController.createDoctor
-);
+router.post("/", [authJwt.verifyToken], doctorController.createDoctor);
 
 router.get("/", doctorController.getDoctors);
 
