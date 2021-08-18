@@ -23,8 +23,7 @@ export const createDoctor = async (req, res) => {
         (especialidad) => especialidad._id
       );
     } else {
-      const especialidad = await Especialidad.findOne({ name: "user" });
-      doctor.especialidades = [especialidad._id];
+      doctor.especialidades = [];
     }
 
     const saved = await doctor.save();
