@@ -29,7 +29,7 @@ export const createDoctor = async (req, res) => {
     const saved = await doctor.save();
     res.status(201).json(saved);
   } catch (error) {
-    res.status(400).json({ message: "Couldn't create patient" });
+    res.status(400).json({ message: "Couldn't create patient", error });
   }
 };
 
