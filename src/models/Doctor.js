@@ -5,7 +5,9 @@ const doctorSchema = new Schema(
     firstName: String,
     lastName: String,
     ced: { type: Number, unique: true },
+    domicilioFiscal: String,
     email: String,
+    rif: String,
     phone: Number,
     especialidades: [
       {

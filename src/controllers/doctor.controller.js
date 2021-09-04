@@ -3,16 +3,27 @@ import Especialidad from "../models/Especialidad";
 
 export const createDoctor = async (req, res) => {
   try {
-    const { firstName, lastName, ced, email, phone, especialidades, ganancia } =
-      req.body;
-
-    const doctor = new Doctor({
+    const {
       firstName,
       lastName,
       ced,
       email,
       phone,
+      especialidades,
       ganancia,
+      rif,
+      domicilioFiscal,
+    } = req.body;
+
+    const doctor = new Doctor({
+      firstName,
+      lastName,
+      ced,
+      rif,
+      email,
+      phone,
+      ganancia,
+      domicilioFiscal,
     });
 
     if (especialidades) {
@@ -29,7 +40,7 @@ export const createDoctor = async (req, res) => {
     const saved = await doctor.save();
     res.status(201).json(saved);
   } catch (error) {
-    res.status(400).json({ message: "Couldn't create patient", error });
+    res.status(400).json({ message: "No se pudo crear el Doctor", error });
   }
 };
 
