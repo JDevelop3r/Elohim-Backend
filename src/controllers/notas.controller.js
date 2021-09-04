@@ -12,7 +12,7 @@ export const update = async (req, res) => {
 
   if (!contenido) res.status(401).send("faltan datos");
 
-  const nota = new Nota({ contenido });
+  const nota = new Nota({ contenido, fecha: new Date() });
   const saved = await nota.save();
   res.json({ saved });
 };
