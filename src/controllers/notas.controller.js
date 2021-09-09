@@ -1,4 +1,4 @@
-import Nota from "../models/Notaes";
+import Nota from "../models/Nota";
 
 export const get = async (req, res) => {
   const notas = await Nota.find();
