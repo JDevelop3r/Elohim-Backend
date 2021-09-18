@@ -18,7 +18,9 @@ export const createPacient = async (req, res) => {
     res.status(201).json({ message: "Paciente registrado", saved });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: "No se pudo registrar el paciente" });
+    res
+      .status(400)
+      .json({ message: "No se pudo registrar el paciente", error });
   }
 };
 
