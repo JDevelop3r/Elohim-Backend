@@ -7,6 +7,8 @@ export const COMISIONES = [
   "desechos_biologicos",
   "gastos_administrativos",
   "decreto_islr",
+  "unidad_tributaria",
+  "mantenimiento_punto",
 ];
 
 const comisionSchema = new Schema(
