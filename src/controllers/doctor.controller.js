@@ -15,6 +15,14 @@ export const createDoctor = async (req, res) => {
       domicilioFiscal,
     } = req.body;
 
+    const exists = await Doctor.findOne({ ced });
+
+    if (exists) {
+      return res
+        .status(401)
+        .json({ message: "El doctor ya se encuentra agregado" });
+    }
+
     const doctor = new Doctor({
       firstName,
       lastName,
@@ -38,7 +46,7 @@ export const createDoctor = async (req, res) => {
     }
 
     const saved = await doctor.save();
-    res.status(201).json(saved);
+    res.status(201).json({ message: "Doctor Registrado", saved });
   } catch (error) {
     res.status(400).json({ message: "No se pudo crear el Doctor", error });
   }
